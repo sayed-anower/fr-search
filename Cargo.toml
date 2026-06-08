@@ -3,12 +3,13 @@ name = "fr-search"
 version = "0.1.0"
 edition = "2021"
 authors = ["Sayed Anower <sayed.anower.17.2@gmail.com>"]
+description = "A high-performance, ultra-optimized search engine and document tagging system built on Tantivy and Meta's FastText model."
 license = "MIT"
 repository = "https://github.com/sayed-anower/fr-search"
 documentation = "https://docs.rs/fr-search"
 readme = "README.md"
-keywords = ["search", "suggestions", "fst", "fts", "fasttext"]
-categories = ["asynchronous"]
+keywords = ["search", "tantivy", "fasttext", "tagging", "nlp"]
+categories = ["text-processing", "database-implementations"]
 
 [dependencies]
 tokio = { version = "1", features = ["full", "sync"] }
