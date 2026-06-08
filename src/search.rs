@@ -126,7 +126,7 @@ impl Fts {
         Ok(())
     }
 
-    pub fn search(&self, keyword: String, limit: usize, offset: usize) -> Result<Vec<String>, FtsError> {
+    pub fn search(&self, keyword: &str, limit: usize, offset: usize) -> Result<Vec<String>, FtsError> {
         let searcher = self.reader.searcher();
         
         let query_parser = QueryParser::for_index(
