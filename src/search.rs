@@ -5,11 +5,10 @@ use std::time::{Duration, Instant};
 use tantivy::collector::TopDocs;
 use tantivy::directory::MmapDirectory;
 use tantivy::query::QueryParser;
+use tantivy::schema::Value;
 use tantivy::schema::{Schema, Field, STORED, STRING, TEXT};
 use tantivy::{Index, IndexReader, TantivyDocument, ReloadPolicy};
 use thiserror::Error;
-use tokio::sync::mpsc as async_mpsc; // we still use for other purposes? Actually we can remove.
-// We'll use std::sync::mpsc for the command channel.
 
 // --- Error Handling ---
 #[derive(Error, Debug)]
@@ -79,12 +78,15 @@ impl Fts {
 
         // Create a bounded synchronous channel for commands.
         let (sync_tx, sync_rx) = mpsc::sync_channel(20_000); // capacity for high throughput
-
+        
+        // Cloned For Background Threads
+        let index_clone = index.clone();
+        let fields_clone = fields.clone();
         // Spawn a dedicated blocking thread for the index writer.
         thread::Builder::new()
             .name("index-writer".to_string())
             .spawn(move || {
-                run_index_writer(index, fields, sync_rx);
+                run_index_writer(index_clone, fields_clone, sync_rx);
             })
             .map_err(|e| FtsError::Writer(e.to_string()))?;
 

@@ -9,7 +9,7 @@ pub mod prelude {
   pub use crate::search::{
     Fts,
     FtsConfig,
-    Document,
+    Content,
   };
   pub use crate::model::{
     Tagger
