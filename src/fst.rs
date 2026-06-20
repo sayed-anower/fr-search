@@ -3,7 +3,7 @@ use fst::automaton::Str;
 use thiserror::Error;
 use fst::Automaton;
 
-/// Structured, static error types for our Fst framework
+// Structured, static error types for our Fst framework
 #[derive(Error, Debug)]
 pub enum FstError {
     #[error("Failed to build or parse the FST graph: {0}")]
@@ -13,7 +13,7 @@ pub enum FstError {
     InvalidUtf8(#[from] std::str::Utf8Error),
 }
 
-/// A lightweight, high-performance wrapper around `fst::Set`
+// A lightweight, high-performance wrapper around `fst::Set`
 pub struct Fst {
     // We hold the raw byte vector to keep the internal Set view alive
     _bytes: Vec<u8>,
@@ -21,7 +21,7 @@ pub struct Fst {
 }
 
 impl Fst {
-    /// Creates a new FST instance. Automatically deduplicates and sorts the input.
+    // Creates a new FST instance. Automatically deduplicates and sorts the input.
     pub fn new<I, S>(keywords: I) -> Result<Self, FstError>
     where
         I: IntoIterator<Item = S>,
@@ -51,8 +51,8 @@ impl Fst {
         Ok(Fst { _bytes: bytes, set })
     }
 
-    /// Performs a lightning-fast autocomplete prefix search.
-    /// Returns a vector of matching strings, or an empty vector if no matches exist.
+    // Performs a lightning-fast autocomplete prefix search.
+    // Returns a vector of matching strings, or an empty vector if no matches exist.
     pub fn search(&self, prefix: &str) -> Vec<String> {
         let automaton = Str::new(prefix).starts_with();
         let mut stream = self.set.search(automaton).into_stream();

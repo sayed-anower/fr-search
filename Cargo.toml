@@ -1,6 +1,6 @@
 [package]
 name = "fr-search"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 authors = ["Sayed Anower <sayed.anower.17.2@gmail.com>"]
 description = "A high-performance, ultra-optimized search engine and document tagging system built on Tantivy and Meta's FastText model."

@@ -15,7 +15,7 @@ pub struct Tagger {
 }
 
 impl Tagger {
-    /// Loads the FastText model into memory. Call this once at startup.
+    // Loads the FastText model into memory. Call this once at startup.
     pub fn new(model_path: &str) -> Result<Self, FastTextError> {
         let mut model = FastText::new();
         model
@@ -25,8 +25,8 @@ impl Tagger {
         Ok(Self { model })
     }
 
-    /// Takes a document body, cleans it, and returns up to 5 tags.
-    /// The first tag is prefixed with "lang:", and subsequent ones are raw categories.
+    // Takes a document body, cleans it, and returns up to 5 tags.
+    // The first tag is prefixed with "lang:", and subsequent ones are raw categories.
     pub fn generate_tags(&self, text: String) -> Vec<String> {
         let clean_text = text.replace('\n', " ").replace('\r', " ");
         if clean_text.trim().is_empty() {
