@@ -5,7 +5,7 @@
 
 **FR-SEARCH** is a high-performance, ultra-optimized search engine and document tagging system built in Rust. By leveraging cutting-edge underlying libraries and Meta's FastText model, it delivers lightning-fast search suggestions and highly accurate automated document tagging with minimal resource overhead.
 
-📖 **[Read the Documentation](https://github.com/sayed-anower/docs/blob/643f3b5582b7f1f593c0725012d8d0e5e8cb518a/docs/fr-search.md)**
+📖 **[Read the Documentation](https://github.com/sayed-anower/docs/blob/9d34342d20b57c2ee6d0d8c4e97c52873081262c/docs/fr-search.md)**
 
 ---
 
